@@ -1,0 +1,39 @@
+﻿<Window x:Class="WPFCore.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFCore.Windows"
+        xmlns:VM="clr-namespace:WPFCore.VM"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type VM:MainVM}}"
+        Title="MainWindow" Height="450" Width="800">
+   <DockPanel>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20"  DockPanel.Dock="Left"
+                Command="{Binding LoadFilesCMD}"/>
+
+        <ItemsControl  ItemsSource="{Binding Videos}"
+                Grid.Row="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Label Content="{Binding FileName}" DockPanel.Dock="Top"/>
+                        <Image Source="{Binding Image}"
+                               x:Name="IS1"
+                               Stretch="Uniform"
+                               RenderOptions.BitmapScalingMode="Fant" Height="200" Width="200"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+       
+    </DockPanel>
+
+</Window>
